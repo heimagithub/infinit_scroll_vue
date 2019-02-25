@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 def get_msg(request):
     try:
         print('======init_msg======')
+        print(request.body)
         index = json.loads(request.body.decode('utf-8'))['index']
 
         msg = []
@@ -20,7 +21,7 @@ def get_msg(request):
                 }
             )
 
-        return JsonResponse({'success': True, "msg": msg})
+        return JsonResponse({'success': True, "msg":msg})
 
     except Exception as e:
         print(e)
